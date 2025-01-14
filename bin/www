@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+const debug = require('debug')('my-application');
+const app = require('../src/app');
+
+// 포트 설정
+app.set('port', process.env.PORT || 3000);
+
+// 서버 생성 및 실행
+const server = app.listen(app.get('port'), () => {
+    debug('VCis server listening on port ' + server.address().port);
+    console.log('VCis server is running on port ' + server.address().port);
+});
+
+// 에러 처리
+server.on('error', (error) => {
+    if (error.syscall !== 'listen'){
+        throw error;
+    }
+
+    const bind = typeof app.get('port') === 'starting'
+        ? 'Pipe ' + app.get('port')
+        : 'Port ' + app.get('port');
+    
+    
+    switch(error.code){
+        case 'EACCES':
+            console.error(bind + ' requires elevated privileges');
+            process.exit(1);
+            break;
+        
+        case 'EADDRINUSE':
+            console.error(bind + ' is already in use');
+            process.exit(1);
+            break;
+
+        default:
+            throw error;
+    }
+});
