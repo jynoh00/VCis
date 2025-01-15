@@ -31,10 +31,12 @@ async function createUser(newUser){
 };
 
 async function removeUser(userId, userPw){
+    console.log('removeUser running');
     const user = await fetchUser(userId);
     const matchPassword = await bcrypt.compare(userPw, user.userPw);
 
     if (matchPassword){
+        console.log('password matched... remove.');
         const users = await fetchAllUsers();
         const idx = users.findIndex(u => u.userId === userId);
         users.splice(idx, 1);
@@ -43,20 +45,20 @@ async function removeUser(userId, userPw){
 };
 
 async function checkUser(userId, userPw){
-    console.log('체크 유저 실행');
+    console.log('checkUser running');
     const user = await fetchUser(userId);
     if (!user){ // 존재하지않는 ID
-        console.log('체크 유저 : false1');
+        console.log('checkUser : false(1)');
         return false;
     }
 
     const matchPassword = await bcrypt.compare(userPw, user.userPw);
     if (matchPassword){ // 비밀번호 일치
-        console.log('체크 유저 : true');
+        console.log('checkUser : true');
         return true;
     }
     
-    console.log('체크 유저 : false2');
+    console.log('checkUser : false(2)');
     return false;
 }
 

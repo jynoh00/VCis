@@ -25,7 +25,7 @@ exports.signup = async (req, res) => {
     if (!((userPw.length >= 12) && (userPw.length <= 16))){ // pw 글자 수
         console.log(': PW character count conditions not met');
         return res.json({
-            result_message: '',
+            result_message: '사용 가능한 아이디입니다.',
             pw_message: '12글자 이상 16글자 이하로 비밀번호를 입력해주세요.',
         });
     }
@@ -33,7 +33,7 @@ exports.signup = async (req, res) => {
     if (userPw !== userPwCheck){ // Pw 불일치
         console.log(': PW Verification failed');
         return res.json({
-            result_message: '',
+            result_message: '사용 가능한 아이디입니다.',
             pw_message: '비밀번호가 일치하지 않습니다.',
         });
     }
@@ -54,19 +54,16 @@ exports.signup = async (req, res) => {
 };
 
 exports.signin = async (req, res) => { // login
-    console.log('signin 실행');
+    console.log('signin running');
     const { userId, userPw } = req.body;
-    console.log('id: ', userId, 'pw: ', userPw);
     const check = await userService.checkUser(userId, userPw);
     if (check){
-        console.log('있는 유저');
         const user = await userService.fetchUser(userId);
         res.cookie(USER_COOKIE_KEY, JSON.stringify(user));
         
         return res.redirect('/main');
     }
-    console.log('없는 유저');
-    res.redirect('/login'); // /main해도 똑같음.
+    res.redirect('/login');
 };
 
 exports.logout = (req, res) => {
@@ -75,11 +72,16 @@ exports.logout = (req, res) => {
 };
 
 exports.withdraw = async (req, res) => {
+    console.log('withdraw running');
     const userCookie = req.cookies[USER_COOKIE_KEY];
-    if (!userCookie) return res.redirect('/login');
+    if (!userCookie){
+        console.log('not have cookie');
+        return res.redirect('/login');
+    }
 
     const user = JSON.parse(userCookie);
-    await userService.removeUser(user.userId, user.password);
+    console.log(user);
+    await userService.removeUser(user.userId, user.userPw);
     res.clearCookie(USER_COOKIE_KEY);
     res.redirect('/');
 };

@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/login', cookieChecker.Check);
-router.get('/signup', (req, res) => {
+router.get('/signup', cookieChecker.Check, (req, res) => {
     console.log('index.js Router run : signup.ejs render');
     res.render('signup');
 });

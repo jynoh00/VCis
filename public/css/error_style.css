@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    color: #F6FCDF;
+    color: #202632;
 }
 
 
@@ -12,9 +12,7 @@ html, body{
 }
 
 body{
-    background: #1A1A19;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #414345, #1A1A19);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #414345, #1A1A19); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: #ffffff;
 }
 
 .error_container {
@@ -26,7 +24,7 @@ body{
     width: 500px;
     padding: 20px;
     
-    border: 3px solid #F6FCDF;
+    border: 3px solid #202632;
     
     border-radius: 10px;
     /* box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); 약간의 그림자 효과 */
@@ -38,6 +36,6 @@ a{
 
 a:hover{
     transform: translateY(-3px); /* 마우스를 올리면 더 위로 이동 */
-    color: #ffffff; 
+    color: #124187; 
 }
 

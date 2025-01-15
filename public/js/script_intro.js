@@ -13,21 +13,21 @@ setTimeout(()=>{
 
 setTimeout(()=>{
     subText.classList.add("visible");
-}, 2500);
+}, 2000);
 
 setTimeout(()=>{
     introText.classList.remove("visible");
     subText.classList.remove("visible");
-}, 4000);
+}, 3000);
 
 setTimeout(()=>{
     siteExplain.style.display = "none";
     finalText.classList.add("visible");
-}, 5000);
+}, 4000);
 
 setTimeout(()=>{
     hideIntroScreen();
-}, 7500);
+}, 5000);
 
 function hideIntroScreen() {
     introScreen.classList.add("hidden");
