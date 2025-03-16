@@ -2,8 +2,7 @@
     margin: 0;
     padding: 0;
     /*background-color: #1A2A6C;*/
-    color: #202632;
-    /* color: #ffffff; */
+    color: #ffffff;
 }
   
 html, body{
@@ -18,7 +17,7 @@ html, body{
 }
 
 body{
-    background-color: #ffffff;
+    background-color: rgb(17, 17, 17);
     
 }
 
@@ -53,12 +52,12 @@ body{
 
 footer {
     position: fixed;
-    bottom: 0;
-    width: 100%;
+    bottom: 0; 
+    width: 100%; 
     padding: 10px 0;
     text-align: center;
     font-size: 12px; 
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); 
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .explain_container.active{
@@ -371,7 +370,6 @@ footer.active:hover{
 
 /*---------trading start---------*/
 
-
 .trading_container{
     display: flex;
     gap: 5px;
@@ -385,11 +383,20 @@ footer.active:hover{
     gap: 5px;
 }
 
+.trading_chart{
+    border-radius: 1rem;
+    height: 500px;
+    width: 900px;
+    margin-top: 20px;
+    border: none;
+}
+
 .trading_coins{
-    margin-top: 30px;
+    margin-top: 20px;
     border-radius: 1rem;
     height: 600px;
-    width: 300px;    
+    width: 300px;
+    
 }
 
 .trading_transaction{
@@ -397,6 +404,7 @@ footer.active:hover{
     height: 120px;
     width: 900px;
     border: none;
+    background-color: rgb(21, 131, 233);   
     margin-left: 15px;
 }
 
@@ -428,9 +436,6 @@ footer.active_t{
     display: flex;
     align-items: center;
     gap: 1rem;
-    
-    border-bottom: 3px solid #005eea;
-    padding: 5px;
 }
 
 .coin-icon {
@@ -446,6 +451,8 @@ footer.active_t{
 }
 
 .coin-name {
+    font-size: 15px;
+    font-weight: 500;
     color: #1e293b;
     text-align: left;
 }
@@ -478,6 +485,7 @@ footer.active_t{
     color: #ef4444;
 }
 
+
 /*---------trading end---------*/
 
 /*---------withdraw start---------*/
@@ -485,11 +493,7 @@ footer.active_t{
 .withdraw_message{
     font-weight: bold;
     font-size: 20px;
-    color: #202632;
-}
-
-#withdraw_userId{
-    color: #124187;
+    color: #ffffff;
 }
 
 .withdraw_container{
@@ -520,9 +524,9 @@ input {
     margin-bottom: 20px;
     margin-top: 20px;
     background: transparent;  
-    border: 2px solid #1c1d1e;  
+    border: 2px solid #ffffff;  
 
-    color: #202632;
+    color: #ffffff;
     padding: 10px;  
     font-size: 20px;
     border-radius: 5px;
@@ -531,9 +535,14 @@ input {
     text-align: center;
 }
 
+/* input:focus {
+    border-color: #202632;  
+    box-shadow: 0 0 5px #202632;  
+} */
+
 #result_message, #pw_message {
     font-size: 17px;
-    color: #124187; 
+    color: #2379f9; 
     white-space: nowrap;  
     overflow: hidden;     
     text-overflow: ellipsis; 
@@ -573,6 +582,10 @@ input {
     border-radius: 0.3rem;
     padding-top: 50px;
     padding-bottom: 50px;
+}
+
+#withdraw_userId{
+    color: #4988e7;
 }
 
 .check_container{
@@ -745,7 +758,6 @@ user-select: none;
     margin-top: 70px;
     padding-top: 20px;
     padding-bottom: 20px;
-    
 
     animation-name: user_container_init;
     animation-duration: 1s;
@@ -793,11 +805,11 @@ user-select: none;
 .user_profile h2 {
     font-size: 25px;
     margin-bottom: 5px;
-    color: #202632;
+    color: #ffffff;
 }
 
 .user_profile p {
-    color: #666;
+    color: #c8c0c0;
     font-size: 18px;
 }
 
@@ -896,13 +908,14 @@ user-select: none;
     position: fixed;
     top: 20%;
     
-    background: white;
+    background: rgb(17, 17, 17);
+    
     padding: 24px;
     padding-bottom: 5px;
     border-radius: 12px;
     width: 90%;
     max-width: 400px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
 }
 
 .modal-container-img{
@@ -912,14 +925,14 @@ user-select: none;
     position: fixed;
     top: 20%;
     
-    background: white;
+    background: rgb(17, 17, 17);
     padding: 24px;
     padding-bottom: 5px;
     border-radius: 12px;
     width: 90%;
     max-width: 400px;
     height: 240px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
 }
 
 .modal-container-pw{
@@ -945,7 +958,7 @@ user-select: none;
   .modal-title-name, .modal-title-pw, .modal-title-explain, .modal-title-img {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #202632;
+    color: #558dff;
   }
 
   .close-button-name, .close-button-pw, .close-button-explain, .close-button-img {
@@ -983,12 +996,8 @@ user-select: none;
   }
 
 
-  #changeNameMsg, #changeExplainMsg, #changePwMsg{
+  #changeNameMsg, #changeExplainMsg{
     color: #5398ff;
-  }
-
-  #changePwMsg{
-    margin-bottom: 10px;
   }
 
   .cancel-button-name, .cancel-button-pw, .cancel-button-explain {
@@ -1014,7 +1023,6 @@ user-select: none;
   }
   .submit-button-pw{
     padding: 10px;
-    margin: 0;
   }
   .submit-button-img{
     padding: 10px;
@@ -1062,17 +1070,3 @@ user-select: none;
 
 /*---------mypage:nickname end---------*/
 
-/*---------mypage:wallet start---------*/
-.container{
-    animation-name: myWallet_init;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes myWallet_init {
-    from{
-        scale: 1.5;
-    }to{
-        scale: 1;
-    }
-}

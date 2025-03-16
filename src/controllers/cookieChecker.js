@@ -1,13 +1,15 @@
 const userService = require('../services/userService');
 const USER_COOKIE_KEY = 'USER';
+const maindirectory = ['/main', '/main/dailymoney', '/main/mywallet', '/main/trading', 
+                        '/main/withdraw', '/main/mypage', '/money/getmoney', '/main/changeprofile', '/main/ranking'];
 
 exports.Check = async (req, res, next) => {
     console.log('cookieChecker.js Controller run');
     const userCookie = req.cookies[USER_COOKIE_KEY];
     console.log('userCookie : ' + userCookie);
 
-    if (!userCookie){ // Cookie가 없을 경우
-        if (req.path === '/signup'){ // 추가@
+    if (!userCookie){
+        if (req.path === '/signup'){
             console.log('signup.ejs render');
             return next();
         }
@@ -23,10 +25,10 @@ exports.Check = async (req, res, next) => {
     let userData;
     try{
         userData = JSON.parse(userCookie);
-    }catch(error){ // Cookie JSON 변환 실패
+    }catch(error){ 
         console.error('Invalid cookie: ', error);
         console.log(': /login redirect');
-        res.clearCookie(USER_COOKIE_KEY); // Cookie 제거
+        res.clearCookie(USER_COOKIE_KEY); 
         if (req.path === '/signup'){
             console.log('signup.ejs render');
             return next();
@@ -58,13 +60,8 @@ exports.Check = async (req, res, next) => {
     }
 
     console.log(': Valid user, proceeding...');
-    if (req.originalUrl === '/main'){
-        return res.render('main', {
-            userId: JSON.parse(userCookie).userId,
-            money: JSON.parse(userCookie).money,
-            template: '<img id = "squirrel" src = "/images/squirrel.png">',
-        });
-    }else if(req.originalUrl === '/main/dailymoney'){
+    
+    if (maindirectory.indexOf(req.originalUrl) > -1){
         return next();
     }else return res.redirect('/main');
 };

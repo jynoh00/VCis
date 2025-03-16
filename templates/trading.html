@@ -1,0 +1,122 @@
+<head>
+    <link rel = "stylesheet" href = "/css/trading.css">
+</head>
+    <div class="trading_container">
+        <div class="trading_left">
+            <div class="trading_chart">
+                <div class="chart-header">
+                    <div class="coin-info">
+                        <div class="coin-name">비트코인 BTC/KRW</div>
+                        <div class="coin-price"></div>
+                    </div>
+                    <div class="time-controls">
+                        <button class="time-button active" value="1" onclick = "changeUnitTime(this.value)">1분</button>
+                        <button class="time-button" value="5" onclick = "changeUnitTime(this.value)">5분</button>
+                        <button class="time-button" value="10" onclick = "changeUnitTime(this.value)">10분</button>
+                        <button class="time-button" value="60" onclick = "changeUnitTime(this.value)">1시간</button>
+                    </div>
+                </div> 
+
+                <div id="chartDiv"></div>
+            </div>
+            <div class = "trading_transaction">
+                <div class = "transaction_first">
+                    <div class = "transaction_mode">
+                        <button onclick = "spotMode();">현물</button>
+                        <button onclick = "futureMode();">선물</button>
+                    </div>
+                    <div class = "future_setting">
+                        <div class="leverage_container">
+                            <div>
+                                <div class="slider-track"></div>
+                                <div class="slider-handle" id="handle"></div>
+                            </div>
+                        </div>
+                        <span class="leverage-value" id="leverageValue">20배</span>
+                        <div class = "future_mode">
+                            <span>
+                                <a style = "color: #254f9b; font-size: 15px;">ISOLATED</a>
+                            </span>
+                            <span>
+                                <a>CROSS</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class = "transaction_second">
+                    <div class = "coinPrice_container">
+                        <span class = "second_info">매수 가격 [KRW] </span><input type = "text" id = "inputCoinPrice" placeholder = "지정 가격 입력"><br>
+                    </div>
+                    <div class = "orderPrice_container">
+                        <span class = "second_info">주문 수량 [KRW] </span><input type = "text" id = "inputOrderPrice" placeholder = "주문 수량 입력">
+                    </div>
+                </div>
+                <div class = "transaction_third">
+                    <div class = "order_type">
+                        <button onclick = "limitMode();">지정가</button>
+                        <button onclick = "marketMode();">시장가</button>
+                    </div>
+                    <div class = "order_button_container">
+                        <button id = "buttonLong">공매수</button>
+                        <button id = "buttonShort">공매도</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="trading_coins">
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script>
+        document.querySelectorAll('.time-button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelector('.time-button.active').classList.remove('active');
+                button.classList.add('active');
+            });
+        });
+
+        const coins = [
+{ name: '비트코인', symbol: 'BTC/KRW', price: 'Loading...', change: 2.34 },
+{ name: '이더리움', symbol: 'ETH/KRW', price: 'Loading...', change: 1.82 },
+{ name: '리플', symbol: 'XRP/KRW', price: 'Loading...', change: -0.75 },
+{ name: '솔라나', symbol: 'SOL/KRW', price:'Loading...', change: 4.21 },
+{ name: '에이다', symbol: 'ADA/KRW', price:'Loading...', change: -1.23 },
+{ name: '헤데라', symbol: 'HBAR/KRW', price:'Loading...', change: 0.92 },
+{ name: '도지코인', symbol: 'DOGE/KRW', price:'Loading...', change: -2.15 },
+{ name: '이오스', symbol: 'EOS/KRW', price:'Loading...', change: +1.15 },
+{ name: '샌드박스', symbol: 'SAND/KRW', price:'Loading...', change: -3.20 },
+{ name: '이더리움클래식', symbol: 'ETC/KRW', price:'Loading...', change: -1.15 },
+{ name: '테더', symbol: 'USDT/KRW', price:'Loading...', change: -0.87 },
+{ name: '무브먼트', symbol: 'MOVE/KRW', price:'Loading...', change: +3.40 },
+{ name: '퀀텀', symbol: 'QTUM/KRW', price:'Loading...', change: -0.15 }
+];
+
+        const coinListContainer = document.querySelector('.trading_coins');
+        coins.forEach(coin => {
+            const coinElement = document.createElement('div');
+            coinElement.className = `coin-list-item`;
+            coinElement.id = `id${coin.symbol.split('/')[0]}`;
+            coinElement.setAttribute('onclick', 'changeCoin.call(this)');
+            coinElement.innerHTML = `
+                <div class="coin-list-info">
+                    <div class="coin-icon">${coin.symbol.slice(0, 1)}</div>
+                    <div class="coin-details">
+                        <h3>${coin.name}</h3>
+                        <div class="coin-symbol">${coin.symbol}</div>
+                    </div>
+                </div>
+                <div class="coin-price-info">
+                    <div class="price-value"><p id = "price${coin.symbol.split('/')[0]}">${coin.price.toLocaleString()}<p></div>
+                    <div class="price-change ${coin.change >= 0 ? 'price-up' : 'price-down'}" id = "change${coin.symbol.split('/')[0]}">
+                        ${coin.change >= 0 ? '+' : ''}${coin.change}%
+                    </div>
+                </div>
+            `;
+            coinListContainer.appendChild(coinElement);
+        });
+
+    </script>
+<script type = "text/javascript" src = "/js/transaction.js"></script>
+<script type = "text/javascript" src = "/js/chart.js"></script>
+<script type = "text/javascript" src = "/js/order.js"></script>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>

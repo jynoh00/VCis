@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt');
 const USERS_JSON_FILENAME = '../src/db/users.json';
 
 async function fetchAllUsers(){
-    // console.log('Current directory:', process.cwd());
     const data = await fs.readFile(USERS_JSON_FILENAME);
     const users = JSON.parse(data.toString());
     
@@ -41,6 +40,8 @@ async function removeUser(userId, userPw){
         const idx = users.findIndex(u => u.userId === userId);
         users.splice(idx, 1);
         await fs.writeFile(USERS_JSON_FILENAME, JSON.stringify(users));
+    }else{
+        return false;
     }
 };
 
@@ -62,4 +63,40 @@ async function checkUser(userId, userPw){
     return false;
 }
 
-module.exports = { fetchAllUsers, fetchUser, createUser, removeUser, checkUser };
+async function updateUser(userId, updateData){
+    const users = await fetchAllUsers();
+    const userIdx = users.findIndex(user => user.userId === userId);
+
+    if (userIdx === -1) throw new Error(`USER with ID ${userId} not found`);
+
+    const updatedUser = {
+        ...users[userIdx],
+        ...updateData, // 덮어쓰기
+    };
+    
+    users[userIdx] = updatedUser;
+
+    await fs.writeFile(USERS_JSON_FILENAME, JSON.stringify(users));
+    return updatedUser;
+}
+
+async function updatePwUser(userId, newPw){
+    const users = await fetchAllUsers();
+    const userIdx = users.findIndex(user => user.userId === userId);
+    const hashedPassword = await bcrypt.hash(newPw, 10);
+
+    if (userIdx === -1) throw new Error(`USER with ID ${userId} not found`);
+
+    const updatedUser = {
+        ...users[userIdx],
+        userPw: hashedPassword,
+    };
+
+    users[userIdx] = updatedUser;
+
+    await fs.writeFile(USERS_JSON_FILENAME, JSON.stringify(users));
+    return updatedUser;
+}
+
+
+module.exports = { fetchAllUsers, fetchUser, createUser, removeUser, checkUser, updateUser, updatePwUser };

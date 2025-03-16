@@ -9,17 +9,18 @@
     <body">
         <div class = "main_content" id = "mainContent">
             <div class = "logo_container">
-                <img id = "main_logo" src = "/images/logo_black.png" onclick = "location.href='/login'">
-                <p id = "logo_txt"><span style = "color: #124187;">SIMPLE </span>Virtual Crypto Investment Simulation</p>
+                <!-- <img id = "main_logo" src = "/images/logo_black.png" onclick = "location.href='/login'"> -->
+                <img id = "main_logo" src = "/images/logo_test.png" onclick = "location.href='/login'">
+                <p id = "logo_txt"><span style = "color: #5398ff;">SIMPLE </span>Virtual Crypto Investment Simulation</p>
             </div>
             <div class="main_container">
                 <div class="input_container">
                     <!-- <form method = "POST" action="/users/signup" id = "signupForm"> -->
                     <form id = "signupForm">
-                        <input id="user_id" type="text" placeholder="ID" spellcheck="false" name = "userId"/><br>
+                        <input id="user_id" type="text" placeholder="enter your ID" spellcheck="false" name = "userId"/><br>
                         <p id="result_message"></p>
-                        <input id="user_pw" type="password" placeholder="PW" name = "userPw"/><br>
-                        <input id="user_pw_confirm" type="password" placeholder="PW Confirm" name = "userPwCheck"/><br>
+                        <input id="user_pw" type="password" placeholder="enter your PW" name = "userPw"/><br>
+                        <input id="user_pw_confirm" type="password" placeholder="PW confirm" name = "userPwCheck"/><br>
                         <p id="pw_message"></p>
                         <input type = "submit" style = "display: none;"/>
                     </form>

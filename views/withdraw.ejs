@@ -35,57 +35,38 @@
                     <a href = "/main/ranking" class = "nav_item <%= (currentPage === 'ranking') ? 'active' : '' %>">랭킹 / 티어</a> -->
                 </div>
                 <div class = "nav_right">
-                    <a href = "/main/mypage" class = "nav_item  <%= (currentPage === 'mypage') ? 'active' : '' %>">마이페이지</a>
+                    <a href = "/main/mypage" class = "nav_item  <%= (currentPage === 'withdraw') ? 'active' : '' %>">마이페이지</a>
                     <a href="/users/logout" class="nav_item">로그아웃</a>
-                    <!-- <a href="/main/withdraw" class="nav_item danger <%= (currentPage === 'withdraw') ? 'active' : '' %>">회원탈퇴</a> -->
                 </div>
             </nav>
         </div>
         <div id = "page_container">
             <div class = "main_container <%= (currentPage === 'trading') ? 'active_t' : '' %>">
-                <div class="user_container">
-                    <div class="user_profile">
-                        <img src="<%= userImg %>">
-                        <h2><%= userName %></h2><br>
-                        <p><%= userExplain %></p>
+                <div class = "withdraw_explain_container">
+                    <span id = "withdraw_title">회원탈퇴 약관 동의</span>
+                    <div class = "withdraw_explain">
+                        <span>
+                                사용하고 계신 아이디 <span id = "withdraw_userId"><%= userId %></span> 는 탈퇴할 경우 재사용 및 복구가 불가능합니다.<br><br>
+                                탈퇴한 아이디는 본인과 타인 모두 재사용 및 복구가 불가하오니 신중하게 선택하시기 바랍니다.<br>
+                        </span>
                     </div>
-                    <div class="user_info">
-                        <p style = "display: none;"><span class="user_label">회원 ID:</span> <%= userId %></p>
-                        <p style = "display: none;"><span class="user_label">보유 원화 자산:</span> <%= money %>원</p>
-                    </div>
-                    <div class="user_actions">
-                        <!-- <button class="user_edit_btn" onclick = "changeName();">닉네임 변경</button> -->
-                        <button class="user_edit_btn" onclick = "location.href = '/main/changeprofile'">프로필 변경</button>
-                        <button class="user_edit_btn" onclick = "changePw();">비밀번호 변경</button>
-                        <form method = "POST" action = "/users/changemode" id = "change_mode_form">
-                            <button id = "darkWhite" class="user_edit_btn">모드 변경</button>
-                        </form>
-                    </div>
-                </div>
-                <div class = "mypage_withdraw_container">
-                    <a href = "/main/withdraw" id = "myPageWithdraw">회원탈퇴</a>
-                </div>
-                
-                <div class="modal-overlay-pw" style = "display: none;">
-                    <div class="modal-container-pw">
-                        <div class="modal-header-pw">
-                            <h2 class="modal-title-pw">비밀번호 변경</h2>
-                            <button class="close-button-pw">&times;</button>
+                    <div class = "check_container">
+                        <div class="checkbox-wrapper-4">
+                            <input class="inp-cbx" id="morning" type="checkbox"/>
+                            <label class="cbx" for="morning"><span>
+                                <svg width="12px" height="10px">
+                                    <use xlink:href="#check-4"></use>
+                                </svg></span><span>안내 사항을 모두 확인했으며, 이에 동의합니다.</span></label>
+                            <svg class="inline-svg">
+                                <symbol id="check-4" viewbox="0 0 12 10">
+                                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                </symbol>
+                            </svg>
                         </div>
-                        <form id = "changePwForm">
-                            <div class="input-container-pw">
-                                <input type = "password" class = "pw-input" placeholder = "기존 비밀번호를 입력하세요">
-                                <p id = "changePwMsg">기존 비밀번호를 입력해주세요.</p>
-                                <input type = "password" class = "pw-input-new" placeholder = "새로운 비밀번호를 입력하세요">
-                                <input type = "password" class = "pw-input-new-confirm" placeholder = "새로운 비밀번호를 한 번 더 입력하세요">
-                            </div>
-                            <div class="button-container-pw">
-                                <input type = "submit" class="submit-button-pw" value = "변경하기"/>
-                            </div>
-                        </form>
                     </div>
-                </div>
-
+                
+                    <button class="button-26" role="button">확인</button>
+                </div>                
                 <%- template %>
             </div>
         </div>
@@ -98,7 +79,5 @@
             </div>
         </footer>
     </body>
-    <script type = "text/javascript" src  = "/js/change_password.js"></script>
     <script type = "text/javascript" src  = "/js/transition.js"></script>
-    <script type = "text/kavascript" src  = "/js/change_mode.js"></script>
 </html>

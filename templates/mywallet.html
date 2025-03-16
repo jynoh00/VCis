@@ -1,0 +1,187 @@
+<link rel = "stylesheet" href = "/css/mywallet_style.css">
+<div class="container">
+        <div class="tabs">
+            <div class="tab active" onclick="showSection('spot')">현물</div>
+            <div class="tab" onclick="showSection('futures')">선물</div>
+            <div class="tab" onclick="showSection('orders')">주문</div>
+        </div>
+        
+        <div id="spot" class="section active">
+            <table class="investment-table">
+                <thead>
+                    <tr>
+                        <th>코인명</th>
+                        <th>진입가격</th>
+                        <th>주문가격</th>
+                        <th>평가손익</th>
+                        <th>수익률</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="coin-name">비트코인 <span class="coin-symbol">BTC</span></div>
+                        </td>
+                        <td class="price">65,324,000</td>
+                        <td>150,000</td>
+                        <td class="price positive">+542,800</td>
+                        <td class="positive">+2.35%</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="coin-name">이더리움 <span class="coin-symbol">ETH</span></div>
+                        </td>
+                        <td class="price">3,248,000</td>
+                        <td>300,000</td>
+                        <td class="price negative">-64,500</td>
+                        <td class="negative">-1.21%</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="coin-name">솔라나 <span class="coin-symbol">SOL</span></div>
+                        </td>
+                        <td class="price">152,400</td>
+                        <td>450,000</td>
+                        <td class="price positive">+18,720</td>
+                        <td class="positive">+3.45%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div id="futures" class="section">
+            <table class="investment-table">
+                <thead>
+                    <tr>
+                        <th>코인명</th>
+                        <th>레버리지</th>
+                        <th>포지션</th>
+                        <th>진입가격</th>
+                        <th>주문가격</th>
+                        <th>평가손익</th>
+                        <th>수익률</th>
+                        <th>작업</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="coin-name">비트코인 <span class="coin-symbol">BTC</span></div>
+                        </td>
+                        <td><span class="leverage">5x</span></td>
+                        <td><span class="position long">공매수</span></td>
+                        <td class="price">65,248,000</td>
+                        <td>0.05</td>
+                        <td class="price positive">+1,248,500</td>
+                        <td class="positive">+12.75%</td>
+                        <td><button class="cancel-btn" onclick="cancelOrder('order2')">포지션 종료</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="coin-name">이더리움 <span class="coin-symbol">ETH</span></div>
+                        </td>
+                        <td><span class="leverage">10x</span></td>
+                        <td><span class="position short">공매도</span></td>
+                        <td class="price">3,325,000</td>
+                        <td>0.8</td>
+                        <td class="price positive">+547,200</td>
+                        <td class="positive">+16.43%</td>
+                        <td><button class="cancel-btn" onclick="cancelOrder('order2')">포지션 종료</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="coin-name">리플 <span class="coin-symbol">XRP</span></div>
+                        </td>
+                        <td><span class="leverage">3x</span></td>
+                        <td><span class="position long">공매수</span></td>
+                        <td class="price">742</td>
+                        <td>1,500</td>
+                        <td class="price negative">-26,800</td>
+                        <td class="negative">-5.28%</td>
+                        <td><button class="cancel-btn" onclick="cancelOrder('order2')">포지션 종료</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div id="orders" class="section">
+            <table class="investment-table">
+                <thead>
+                    <tr>
+                        <th>코인명</th>
+                        <th>거래유형</th>
+                        <th>주문유형</th>
+                        <th>주문가격</th>
+                        <th>주문수량</th>
+                        <th>상태</th>
+                        <th>등록시간</th>
+                        <th>작업</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="coin-name">비트코인 <span class="coin-symbol">BTC</span></div>
+                        </td>
+                        <td><span class="order-type buy">매수</span></td>
+                        <td>현물</td>
+                        <td class="price">123,020,000</td>
+                        <td>500,000</td>
+                        <td><span class="order-status">대기중</span></td>
+                        <td>2025-03-16 14:33</td>
+                        <td><button class="cancel-btn" onclick="cancelOrder('order1')">취소</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="coin-name">이더리움 <span class="coin-symbol">ETH</span></div>
+                        </td>
+                        <td><span class="order-type sell">매도</span></td>
+                        <td>현물</td>
+                        <td class="price">3,420,000</td>
+                        <td>100,000</td>
+                        <td><span class="order-status">대기중</span></td>
+                        <td>2025-03-16 12:45</td>
+                        <td><button class="cancel-btn" onclick="cancelOrder('order2')">취소</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="coin-name">솔라나 <span class="coin-symbol">SOL</span></div>
+                        </td>
+                        <td><span class="order-type buy">공매수</span></td>
+                        <td>선물/25x</td>
+                        <td class="price">253,000</td>
+                        <td>120,000</td>
+                        <td><span class="order-status">대기중</span></td>
+                        <td>2025-03-16 15:08</td>
+                        <td><button class="cancel-btn" onclick="cancelOrder('order3')">취소</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="coin-name">리플 <span class="coin-symbol">XRP</span></div>
+                        </td>
+                        <td><span class="order-type buy">공매도</span></td>
+                        <td>선물/5x</td>
+                        <td class="price">3,500</td>
+                        <td>450,000</td>
+                        <td><span class="order-status">대기중</span></td>
+                        <td>2025-03-16 15:08</td>
+                        <td><button class="cancel-btn" onclick="cancelOrder('order3')">취소</button></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="coin-name">리플 <span class="coin-symbol">XRP</span></div>
+                        </td>
+                        <td><span class="order-type sell">공매도</span></td>
+                        <td>선물/5x</td>
+                        <td class="price">3,500</td>
+                        <td>450,000</td>
+                        <td><span class="order-status">대기중</span></td>
+                        <td>2025-03-16 15:08</td>
+                        <td><button class="cancel-btn" onclick="cancelOrder('order3')">취소</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+<script type = "text/javascript" src = "/js/mywallet_script.js"></script>

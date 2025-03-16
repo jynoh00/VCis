@@ -1,38 +1,11 @@
-const introScreen = document.getElementById("introScreen");
-const mainContent = document.getElementById("mainContent");
-
-const introText = document.getElementById("introText");
-const subText = document.getElementById("subText");
-const finalText = document.getElementById("finalText");
-
-const siteExplain = document.getElementById("explainContainer");
+const introLogoTxt = document.getElementById('intro_logo_txt');
+const introLogoContainer = document.querySelector('.intro_logo_container');
 
 setTimeout(()=>{
-    introText.classList.add("visible");
-}, 1000);
+    introLogoTxt.style.display = 'block';
+    introLogoContainer.style.animationName = 'logo_to_top';
 
-setTimeout(()=>{
-    subText.classList.add("visible");
-}, 2000);
-
-setTimeout(()=>{
-    introText.classList.remove("visible");
-    subText.classList.remove("visible");
-}, 3000);
-
-setTimeout(()=>{
-    siteExplain.style.display = "none";
-    finalText.classList.add("visible");
-}, 4000);
-
-setTimeout(()=>{
-    hideIntroScreen();
-}, 5000);
-
-function hideIntroScreen() {
-    introScreen.classList.add("hidden");
-    setTimeout(() => {
-        mainContent.classList.add("visible");
+    setTimeout(()=>{
         location.href = '/login';
-    }, 1000);
-}
+    }, 2000);
+}, 1000);

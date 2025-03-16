@@ -1,0 +1,180 @@
+.tabs {
+    display: flex;
+    margin-bottom: 15px;
+    width: 100%;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    font-weight: 500;
+    color: #888;
+    transition: all 0.3s ease;
+}
+
+.tab.active {
+    color: #5398ff;
+    border-bottom: 2px solid #5398ff;
+}
+
+.investment-table {
+    background-color: rgba(0, 0, 0, 0.801);
+    margin-left: auto; 
+    margin-right: auto;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    width: 900px;
+}
+
+.investment-table thead {
+    background-color: #202632;
+}
+
+.investment-table th {
+    padding: 12px 15px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 14px;
+    color: #fff;
+}
+
+.investment-table tbody tr {
+    border-bottom: 2px solid #fff;
+}
+
+.investment-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.investment-table td {
+    padding: 15px;
+    font-size: 14px;
+}
+
+.coin-name {
+    display: flex;
+    padding: 5px 10px;
+    align-items: center;
+    font-weight: 500;
+    color: #fff;
+}
+
+.coin-symbol {
+    color: #a0a0a0;
+    margin-left: 6px;
+    font-size: 12px;
+}
+
+.positive {
+    color: #26df8b;
+}
+
+.negative {
+    color: #ff4d4d;
+}
+
+td{
+    color: #fff;
+}
+
+.leverage {
+    background-color: rgba(38, 223, 139, 0.1);
+    color: #5398ff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.position {
+    font-weight: 500;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.long {
+    background-color: rgba(38, 223, 139, 0.1);
+    color: #26df8b;
+}
+
+.short {
+    background-color: rgba(255, 77, 77, 0.1);
+    color: #ff4d4d;
+}
+
+.order-type {
+    font-weight: 500;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.buy {
+    background-color: rgba(38, 223, 139, 0.1);
+    color: #26df8b;
+}
+
+.sell {
+    background-color: rgba(255, 77, 77, 0.1);
+    color: #ff4d4d;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.empty-text {
+    padding: 30px 0;
+    text-align: center;
+    color: #888;
+}
+
+.price {
+    color: #fff;
+}
+
+.cancel-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #e1e1e1;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cancel-btn:hover {
+    background-color: rgba(255, 77, 77, 0.3);
+    color: #ff4d4d;
+}
+
+.order-status {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: rgba(255, 200, 0, 0.1);
+    color: #ffc800;
+}
+
+@media (max-width: 768px) {
+    .investment-table {
+        font-size: 13px;
+    }
+    
+    .investment-table th,
+    .investment-table td {
+        padding: 10px 8px;
+    }
+}
